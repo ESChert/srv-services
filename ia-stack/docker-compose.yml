@@ -1,0 +1,21 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+
+    # Solo accesible desde el propio host (Caddy hará proxy a 127.0.0.1)
+    ports:
+      - "127.0.0.1:11434:11434"
+      - "100.74.93.53:11434:11434"
+
+    # Persistencia dentro de ia-stack/
+    volumes:
+      - ./ollama/data:/root/.ollama
+
+    # Salud: usa curl si existe; si no, fallback a wget (según imagen)
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:11434/api/tags >/dev/null || wget -qO- http://localhost:11434/api/tags >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 5s
+      retries: 10

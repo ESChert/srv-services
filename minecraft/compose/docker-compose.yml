@@ -1,0 +1,23 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server:java25
+    container_name: minecraft
+    restart: unless-stopped
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    ports:
+      - "25565:25565"      # Java Edition
+      # - "19132:19132/udp" # (opcional) Bedrock
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"        # PAPER recomendado (mejor rendimiento). Para vanilla: "VANILLA"
+      VERSION: "${MINECRAFT_VERSION:-1.21.11}"    # cámbialo si quieres otra
+      MEMORY: "${MINECRAFT_MEMORY:-4G}"         # ajusta según RAM (p.ej. 2G/4G/6G)
+      TZ: "${TZ:-Europe/Madrid}"
+      ENABLE_ROLLING_LOGS: "true"
+
+      ENABLE_AUTOPAUSE: "true"
+      AUTOPAUSE_TIMEOUT_EST: "5m"
+    volumes:
+      - ../data:/data

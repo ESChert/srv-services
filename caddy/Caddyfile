@@ -1,0 +1,14 @@
+ubuntu-server.tail23fc90.ts.net {
+	tls /certs/ubuntu-server.crt /certs/ubuntu-server.key
+	encode gzip
+
+	# n8n por path /n8n
+	handle_path /n8n* {
+		reverse_proxy n8n:5678
+	}
+
+	# Página simple para /
+	handle / {
+		respond "OK - Caddy HTTPS funcionando" 200
+	}
+}
