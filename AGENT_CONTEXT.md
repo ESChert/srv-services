@@ -40,21 +40,6 @@ Notas:
 - Persiste en `ia-stack/ollama/data/`.
 - Expone `11434` en loopback y en una IP concreta adicional.
 
-### Pi-hole
-
-Archivo: [pihole/docker-compose.yml](/home/nobody93/services/pihole/docker-compose.yml)
-
-Servicio:
-
-- `pihole`
-
-Notas:
-
-- Usa `NET_ADMIN`.
-- Expone DNS en `53/tcp` y `53/udp`.
-- Expone UI en `8081`.
-- La contraseña web debe venir por variable `PIHOLE_WEBPASSWORD`.
-
 ### Media
 
 Archivo: [plex/docker-compose.yml](/home/nobody93/services/plex/docker-compose.yml)
@@ -107,7 +92,6 @@ Notas:
 
 - `README.md` ampliado con mapa del repo, variables y comandos de arranque.
 - `.env.example` sin credenciales reales.
-- `pihole/docker-compose.yml` preparado para leer la contraseña desde variable.
 
 ## Cómo orientarse rápido
 

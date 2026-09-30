@@ -7,9 +7,6 @@ ia-stack/ollama/{data}/
 
 minecraft/data/
 
-pihole/data/
-pihole/dnsmasq/
-
 plex/config/
 plex/downloads/
 plex/media/
